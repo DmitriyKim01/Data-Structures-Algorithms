@@ -18,7 +18,6 @@ public class Stacks {
         stack.pop();
 
         // Useful methods:
-
         String pop = stack.pop();
         System.out.println(stack.peek());
         System.out.println(stack.search("Zero"));
