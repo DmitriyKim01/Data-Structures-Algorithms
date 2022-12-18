@@ -1,3 +1,5 @@
+package Structures;
+
 import java.util.Stack;
 public class Stacks {
     public static void main(String[] args) {
@@ -19,9 +21,8 @@ public class Stacks {
 
         // Useful methods:
         String pop = stack.pop();
-        System.out.println(stack.peek());
-        System.out.println(stack.search("Zero"));
-        System.out.println(stack);
-
+        System.out.println("Peeking the first element: " + stack.peek());
+        System.out.println("Searching for the element: " + stack.search("First"));
+        System.out.println("Printing our stack: " + stack);
     }
 }

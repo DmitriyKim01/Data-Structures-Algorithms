@@ -1,3 +1,5 @@
+package Structures;
+
 import java.util.LinkedList;
 
 public class LinkedLists {
@@ -7,8 +9,6 @@ public class LinkedLists {
         Node nodeA = new Node(6);
         Node nodeB = new Node(3);
         Node nodeC = new Node(4);
-        Node nodeD = new Node(2);
-        Node nodeE = new Node(1);
 
     }
 
@@ -23,7 +23,7 @@ public class LinkedLists {
         listStack.push("Second");
         listStack.push("Third");
         listStack.pop();
-        System.out.println(listStack);
+        System.out.println("We can implement the list as a stack (push, pop): " + listStack);
 
         //Queue implementation:
         listQueue.offer("Zero");
@@ -31,7 +31,7 @@ public class LinkedLists {
         listQueue.offer("Second");
         listQueue.offer("Third");
         listQueue.poll();
-        System.out.println(listQueue);
+        System.out.println("Or, we can implement it as a queue (offer, poll):" + listQueue);
 
         //Adding nodes:
         list.add(0, "Zero");
@@ -39,12 +39,12 @@ public class LinkedLists {
         list.add(2, "Second");
         list.add(3, "Third");
         list.remove();
-        System.out.println(list);
+        System.out.println("Finally we can use (add and remove) methods: : " + list);
 
         //Useful methods:
-        System.out.println(list.indexOf("Zero"));
-        System.out.println(list.peekFirst());
-        System.out.println(list.peekLast());
+        System.out.println("With lists, we can search for index: " + list.indexOf("Zero"));
+        System.out.println("We can also peek elements like in stacks or queues: " + list.peekFirst());
+        System.out.println("Or peek the last element: " + list.peekLast());
         list.addFirst("Minus");
         list.addLast("Fourth");
         list.removeFirst();
