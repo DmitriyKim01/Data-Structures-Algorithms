@@ -1,4 +1,4 @@
-package Searching_Algorithms;
+package Algorithms;
 
 import java.util.Arrays;
 import java.util.HashSet;
