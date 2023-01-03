@@ -7,12 +7,12 @@ import java.util.Random;
 public class Search {
     static Random random = new Random();
     public static void main(String[] args) {
-        int[] binaryTest = unitTest();
+        int[] binaryTest = createArray();
         int target = random.nextInt(10)+1;
         System.out.println(target + " is on position: " + binarySearch(binaryTest, target));
         for (int i : binaryTest) System.out.print(i + " ");
     }
-    public static int[] unitTest(){
+    public static int[] createArray(){
         HashSet<Integer> set = new HashSet<>();
         int[] array = new int[random.nextInt(11)];
         for (int i = 0; i < array.length; i++){

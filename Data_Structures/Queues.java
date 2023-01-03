@@ -5,10 +5,10 @@ import java.util.Queue;
 
 public class Queues {
     public static void main(String[] args) {
-        tutorial();
+        testingBasicsFunctions();
     }
 
-    public static void tutorial(){
+    public static void testingBasicsFunctions(){
         // Creating a queue:
         Queue<String> queue = new LinkedList<String>();
         // Adding elements:

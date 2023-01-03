@@ -4,19 +4,17 @@ import java.util.LinkedList;
 
 public class LinkedLists {
     public static void main(String[] args) {
-        tutorial();
-
+        testingBasicsFunctions();
         Node nodeA = new Node(6);
         Node nodeB = new Node(3);
         Node nodeC = new Node(4);
 
     }
 
-    public static void tutorial(){
+    public static void testingBasicsFunctions(){
         LinkedList<String> listStack = new LinkedList<>();
         LinkedList<String> listQueue = new LinkedList<>();
         LinkedList<String> list = new LinkedList<>();
-
         //Stack implementation:
         listStack.push("Zero");
         listStack.push("First");
@@ -24,7 +22,6 @@ public class LinkedLists {
         listStack.push("Third");
         listStack.pop();
         System.out.println("We can implement the list as a stack (push, pop): " + listStack);
-
         //Queue implementation:
         listQueue.offer("Zero");
         listQueue.offer("First");
@@ -32,15 +29,13 @@ public class LinkedLists {
         listQueue.offer("Third");
         listQueue.poll();
         System.out.println("Or, we can implement it as a queue (offer, poll):" + listQueue);
-
-        //Adding nodes:
+        //Default (List) implementation:
         list.add(0, "Zero");
         list.add(1, "First");
         list.add(2, "Second");
         list.add(3, "Third");
         list.remove();
         System.out.println("Finally we can use (add and remove) methods: : " + list);
-
         //Useful methods:
         System.out.println("With lists, we can search for index: " + list.indexOf("Zero"));
         System.out.println("We can also peek elements like in stacks or queues: " + list.peekFirst());

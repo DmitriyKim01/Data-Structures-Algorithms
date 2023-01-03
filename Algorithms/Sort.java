@@ -5,27 +5,45 @@ import java.util.Random;
 
 public class Sort {
     public static void main(String[] args) {
-        int[] testArray = unitTest();
-        int[] bubbleTest = bubbleSort(testArray);
+        int[] testingArray = createArray();
         System.out.println("Bubble sort: ");
-        for (int i : bubbleTest) System.out.print(i + " ");
+        bubbleSort(testingArray);
+        for (int i : testingArray){
+            System.out.print(i + " ");
+        }
 
         System.out.println();
-        int[] selectionTest = selectionSort(testArray);
+
+        testingArray = createArray();
         System.out.println("Selection sort: ");
-        for (int i : selectionTest) System.out.print(i + " ");
+        selectionSort(testingArray);
+        for (int i : testingArray){
+            System.out.print(i + " ");
+        }
 
         System.out.println();
-        quickSort(testArray, 0, testArray.length-1);
+
+        testingArray = createArray();
+        quickSort(testingArray, 0, testingArray.length-1);
         System.out.println("Quick sort: ");
-        for (int i : testArray) System.out.print(i + " ");
-        
+        for (int i : testingArray){
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+
+        testingArray = createArray();
+        mergeSort(testingArray);
+        System.out.println("Merge sort: ");
+        for (int i : testingArray){
+            System.out.print(i + " ");
+        }
     }
 
-    public static int[] unitTest(){
+    public static int[] createArray(){
         Random random = new Random();
         HashSet<Integer> set = new HashSet<>();
-        int[] array = new int[random.nextInt(15)];
+        int[] array = new int[random.nextInt(30)];
         for (int i = 0; i < array.length; i++){
             int temp = random.nextInt(100);
             while (!set.add(temp)) temp = random.nextInt(100);
@@ -35,21 +53,20 @@ public class Sort {
     }
 
     //Time complexity O(n^2)
-    public static int[] bubbleSort(int[] array){
+    public static void bubbleSort(int[] array){
         for (int i = 0; i < array.length - 1; i ++){
             for (int j = 0; j < array.length - 1 - i; j++){
                 if (array[j] > array[j + 1]){
-                    array[j] += array[j+1];
-                    array[j+1] = array[j] - array[j+1];
-                    array[j] -= array[j+1];
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[i] = temp;
                 }
             }
         }
-        return array;
     }
 
     //Time complexity O(n^2)
-    public static int[] selectionSort(int[] array){
+    public static void selectionSort(int[] array){
         for (int i = 0; i < array.length-1; i++){
             int min = i;
             for (int j = i + 1; j < array.length; j++){
@@ -59,18 +76,17 @@ public class Sort {
             array[i] = array[min];
             array[min] = temp;
         }
-        return array;
     }
 
     // Time complexity O(nlogn)
     public static void quickSort(int[] array, int start, int end){
         if (end <= start) return;  //Base Case
-        int pivot = partition(array, start, end);
+        int pivot = pivotFinder(array, start, end);
         quickSort(array, start, pivot-1);
         quickSort(array, pivot+1, end);
     }
 
-    public static int partition(int[] array, int start, int end){
+    public static int pivotFinder(int[] array, int start, int end){
         int pivot = array[end];
         int i = start-1;
         int temp = 0;
@@ -91,5 +107,53 @@ public class Sort {
         return i;
     }
 
+    // Time complexity O(nlogn)
+    public static void mergeSort(int[] array){
+        int length = array.length;
+        if (length <= 1) return;// Base case;
 
+        int middle = length / 2;
+        int[] leftArray = new int[middle];
+        int[] rightArray = new int[length - middle];
+        int i = 0; // Left Array;
+        int j = 0; // Right Array;
+
+        for (; i < length; i++){
+            if (i < middle) leftArray[i] = array[i];
+            else{
+                rightArray[j] = array[i];
+                j++;
+            }
+        }
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+        mergeArrays(leftArray, rightArray, array);
+    }
+    private static void mergeArrays(int[] leftArray, int[] rightArray, int[] array){
+        int leftSize = array.length / 2;
+        int rightSize = array.length - leftSize;
+        int i = 0, l = 0, r = 0;    // Indices;
+        // Check the condition for merging:
+        while (l < leftSize && r < rightSize){
+            if (leftArray[l] < rightArray[r]){
+                array[i] = leftArray[l];
+                i++;
+                l++;
+            }else{
+                array[i] = rightArray[r];
+                i++;
+                r++;
+            }
+        }
+        while(l < leftSize){
+            array[i] = leftArray[l];
+            i++;
+            l++;
+        }
+        while (r < rightSize){
+            array[i] = rightArray[r];
+            i++;
+            r++;
+        }
+    }
 }

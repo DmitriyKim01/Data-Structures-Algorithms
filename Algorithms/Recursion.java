@@ -5,8 +5,9 @@ public class Recursion {
         long start = System.nanoTime();
         System.out.println(isPalindrome("HefeH", 0));
         long end = System.nanoTime();
-        // Using NanoTime to check the algorithm actual speed:
+        // Using NanoTime to compare the recursion and loop methods:
         System.out.println(end-start);
+        // Conclusion: Recursion is actually slower than loops.
     }
 
     // Is Palindrome method using loops:
